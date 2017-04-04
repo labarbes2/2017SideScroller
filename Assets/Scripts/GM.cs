@@ -1,11 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GM : MonoBehaviour {
-    public int lives;
+    public int _Lives = 3;
     public int points;
+   
+    public Text livesValue; 
+    public Text pointsValue;
+    
+    public void SetLives(int newValue) {
+        _Lives = newValue;
+        Debug.Log ("Lives now equals: " + _Lives);
+        livesValue.text = _Lives.ToString();
+            } 
 
-    public void SetLives(int newValue){
-        lives = newValue;
+    public int GetLives() {
+        return _Lives;
     }
 
 }
