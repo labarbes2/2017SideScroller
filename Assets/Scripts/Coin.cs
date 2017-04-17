@@ -5,7 +5,7 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
 
-    
+     
      public int points = 1;
 
     void OnCollisionEnter2D(Collision2D coll)
