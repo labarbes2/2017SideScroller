@@ -11,19 +11,21 @@ public class FlyingBooster : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        var player = coll.gameObject.GetComponent<Player>();
+        player = coll.gameObject.GetComponent<Player>();
         if (player != null) { // !=not
             player.canFly = true;
             gameObject.GetComponent<Collider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
             timeStarted = Time.time;
+
+            player.Powerup();
         }
     }
 
     void Update()
     {
-        if(timeStarted !=0 && timeStarted +lastForSeconds > Time.time) {
+        if(timeStarted != 0 && timeStarted +lastForSeconds > Time.time) {
             timeStarted = 0;
             player.canFly = false;
         }
