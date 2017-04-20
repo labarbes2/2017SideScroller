@@ -37,25 +37,26 @@ public class Player : MonoBehaviour {
         Vector2 v = rigidbody.velocity;
         v.x = x * speed;
 
-        if (v.x != 0)
-        {
+        if (v.x != 0){
             anim.SetBool("Running", true);
+        } else {
+            anim.SetBool("Running", false);
         }
-        else { anim.SetBool("Running", false);
+
+        if (v.x > 0) {
+            sr.flipX = false;
+        } else if (v.x < 0){
+            sr.flipX = true;
         }
-            if (v.x > 0)
-                sr.flipX = false;
-            else if (v.x < 0)
-                sr.flipX = true;
 
         if(Input.GetButtonDown("Jump") && (v.y == 0 || canFly) ) {
             v.y = jumpSpeed;
         }
 
-        if (air) {
+        if (v.y != 0) {
             anim.SetBool("Air", true);
-        }
-        else { anim.SetBool("Air", false);
+        } else {
+            anim.SetBool("Air", false);
         }
 
         rigidbody.velocity = v;
