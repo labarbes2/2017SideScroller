@@ -14,6 +14,7 @@ public class FlyingBooster : MonoBehaviour {
         player = coll.gameObject.GetComponent<Player>();
         if (player != null) { // !=not
             player.canFly = true;
+            gameObject.SetActive(false);
             gameObject.GetComponent<Collider2D>().enabled = false;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
