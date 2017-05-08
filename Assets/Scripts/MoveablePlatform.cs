@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveablePlatform : MonoBehaviour {
+public class MoveablePlatform : MonoBehaviour
+{
 
     private float useSpeed;
     public float directionSpeed = 9.0f;
@@ -29,6 +30,7 @@ public class MoveablePlatform : MonoBehaviour {
         }
         transform.Translate(0, useSpeed * Time.deltaTime, 0);
     }
+}
     
 
 
