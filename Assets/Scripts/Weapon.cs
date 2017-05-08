@@ -29,7 +29,8 @@ public class Weapon : MonoBehaviour
         rigidbody2D.isKinematic = true;
         rigidbody2D.velocity = new Vector2();
         transform.parent = player.transform;
-        transform.localScale = new Vector3(.03f, .03f);
-        transform.localPosition = new Vector3(.2f, .2f);
+        transform.localScale = new Vector3(.05f, .05f); //edit for size of grenade and weapon
+        transform.localPosition = new Vector3(.2f, .2f); // edit ...^
+        player.AddWeapon(this);
     }
 }

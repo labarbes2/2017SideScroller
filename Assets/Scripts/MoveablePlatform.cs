@@ -6,18 +6,16 @@ public class MoveablePlatform : MonoBehaviour
 {
 
     private float useSpeed;
-    public float directionSpeed = 9.0f;
+    public float directionSpeed = 5.0f;
     float origY;
-    public float distance = 10.0f;
+    public float distance = 4.0f;
 
-    // Use this for initialization
     void Start()
     {
         origY = transform.position.y;
         useSpeed = -directionSpeed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (origY - transform.position.y > distance)
