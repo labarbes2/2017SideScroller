@@ -9,7 +9,8 @@ public class Player : MonoBehaviour {
     public float jumpSpeed = 5;
     public float deadZone = -3;
     public bool canFly = false;
-
+    public GameObject Rightbullet; 
+    Transform firingposition;
     public Weapon currentWeapon;
     private List<Weapon> Weapons = new List<Weapon>();
 
@@ -20,7 +21,8 @@ public class Player : MonoBehaviour {
     private Animator anim;
     public bool air;
     private SpriteRenderer sr;
-         
+    
+             
 	// Use this for initialization
 	void Start () {
         startingPosition = transform.position; 
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
         air = true;
         sr = GetComponent<SpriteRenderer>();
+
+        firingposition = transform.FindChild("firingposition"); //
 	}
 	
 	// Update is called once per frame
@@ -73,6 +77,10 @@ public class Player : MonoBehaviour {
             int i = (Weapons.IndexOf(currentWeapon) + 1) % Weapons.Count;
             SetCurrentWeapon(Weapons[i]);
         }
+        if(Input.GetKeyDown(KeyCode.RightControl)) 
+        {
+            Fire();
+        }
 
         //Check for out
         if (transform.position.y < deadZone) {
@@ -82,7 +90,7 @@ public class Player : MonoBehaviour {
 
         //rigidbody.AddForce(new Vector2(x * speed, 0)); (could have done this too)
 	    }
-
+  
     public void GetOut() {
         _GM.SetLives( _GM.GetLives() - 1);
         transform.position = startingPosition;
@@ -122,4 +130,8 @@ public class Player : MonoBehaviour {
     void OnCollisionExit2D(Collision2D coll){
         air = true;
     } 
+
+    void Fire() {
+            Instantiate(Rightbullet, firingposition.position, Quaternion.identity);
+    }
 }
